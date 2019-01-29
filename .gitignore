@@ -1,0 +1,8 @@
+.idea/
+
+server/node_modules/
+server/package-lock.json
+server/.prettierrc
+
+admin/package-lock.json
+admin/.editorconfig
