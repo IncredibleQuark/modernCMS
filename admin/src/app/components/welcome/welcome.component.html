@@ -1,3 +1,52 @@
-<p>
-  welcome works!
-</p>
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card>
+    <form #registerForm="ngForm" (ngSubmit)="tryRegister(registerForm)">
+    <mat-card-title>Installation</mat-card-title>
+    <mat-card-subtitle>Create your new admin account to start using the CMS!</mat-card-subtitle>
+    <mat-card-content fxLayout="column">
+      <mat-form-field>
+
+        <input matInput name="name" type="text" placeholder="Name" ngModel required #name="ngModel" autocomplete="off"/>
+        <mat-hint></mat-hint>
+        <mat-error *ngIf="name.touched">
+          Name can't be empty
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+
+        <input matInput name="surname" type="text" placeholder="Surname" ngModel required #surname="ngModel" autocomplete="off"/>
+        <mat-hint></mat-hint>
+        <mat-error *ngIf="surname.touched">
+          Surname can't be empty
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="email" type="email" placeholder="Email" email ngModel required #email="ngModel" autocomplete="off"/>
+        <mat-hint></mat-hint>
+        <mat-error *ngIf="(email.touched && !email.valid)">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput name="password" type="password" placeholder="Password" ngModel required #password="ngModel" autocomplete="off"/>
+        <mat-hint>Password should be at least 6 characters long</mat-hint>
+        <mat-error *ngIf="password.touched || password.invalid">
+          Password too short
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="passwordRepeat" type="password" placeholder="Repeat password" ngModel required #passwordRepeat="ngModel" autocomplete="off"/>
+        <mat-error *ngIf="passwordRepeat.touched || passwordRepeat.invalid">
+          Password doesn't match
+        </mat-error>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Install</button>
+    </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

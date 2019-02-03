@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { PageNotFoundComponent } from './components/common/page-not-found/page-not-found.component';
 import { MainComponent } from './components/main/main.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AppMaterialModule} from "./app-material.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,6 +20,11 @@ import { MainComponent } from './components/main/main.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    AppMaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
