@@ -22,4 +22,7 @@ export class Admin extends Timestamp {
     @Column()
     active: boolean;
 
+    @Column()
+    emailConfirmed: boolean;
+
 }

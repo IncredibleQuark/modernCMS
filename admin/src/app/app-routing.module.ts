@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {PageNotFoundComponent} from "./components/common/page-not-found/page-not-found.component";
-import {WelcomeComponent} from "./components/welcome/welcome.component";
+import {InstallationComponent} from "./components/installation/installation.component";
 import {MainComponent} from "./components/main/main.component";
 import {AuthGuard} from "./guards/auth.guard";
 
@@ -13,8 +13,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'installation',
-    component: WelcomeComponent,
+    path: 'admin/installation',
+    component: InstallationComponent,
     pathMatch: 'full'
   },
   {

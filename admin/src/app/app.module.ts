@@ -3,18 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
+import { InstallationComponent } from './components/installation/installation.component';
 import { PageNotFoundComponent } from './components/common/page-not-found/page-not-found.component';
 import { MainComponent } from './components/main/main.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppMaterialModule} from "./app-material.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {InstallationService} from "./services/installation/installation.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
+    InstallationComponent,
     PageNotFoundComponent,
     MainComponent
   ],
@@ -25,9 +27,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     AppMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [InstallationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
