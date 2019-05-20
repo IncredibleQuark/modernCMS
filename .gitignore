@@ -3,6 +3,7 @@
 server/node_modules/
 server/package-lock.json
 server/.prettierrc
+server/dist
 
 admin/package-lock.json
 admin/.editorconfig
