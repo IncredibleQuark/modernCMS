@@ -1,4 +1,4 @@
-import {Controller, Get, Post, Body} from '@nestjs/common';
+import {Controller, Get, Post, Body, HttpException} from '@nestjs/common';
 import {CreateAdminDto} from "./create-admin.dto";
 import {AdminService} from "./admin.service";
 import {JsonResponse} from "../common/JsonResponse";
@@ -16,7 +16,12 @@ export class AdminController {
 
     @Post()
     async create(@Body() createAdminDto: CreateAdminDto): Promise<JsonResponse> {
-        await this.adminService.create(createAdminDto);
-        return JsonResponse.success()
+        try {
+            const response = await this.adminService.create(createAdminDto);
+            return JsonResponse.success(response)
+        } catch (err) {
+            throw new HttpException(err.message, 500);
+        }
+
     }
 }
