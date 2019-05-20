@@ -19,7 +19,7 @@ export class InstallationComponent implements OnInit {
   }
 
   checkIfInstalled() {
-    
+
   }
 
   tryRegister(form) {
