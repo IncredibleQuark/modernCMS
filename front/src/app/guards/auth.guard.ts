@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    this.router.navigate(['/installation']).then();
-    return false;
+    // this.router.navigate(['/']).then();
+    return true;
   }
 }

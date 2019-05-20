@@ -9,6 +9,6 @@ describe('workspace-project App', () => {
 
   it('should display installation message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to admin!');
+    expect(page.getParagraphText()).toEqual('Welcome to front!');
   });
 });

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {InstallationService} from "../../services/installation/installation.service";
-import {CreateAdminDto} from "../../../../../server/src/admin/create-admin.dto";
+import {InstallationService} from "../../../services/installation/installation.service";
+import {CreateAdminDto} from "../../../../../../server/src/admin/create-admin.dto";
 import {MatSnackBar} from "@angular/material";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-welcome',
@@ -12,7 +13,7 @@ export class InstallationComponent implements OnInit {
 
   private admin: CreateAdminDto;
 
-  constructor(private readonly installationService: InstallationService, private snackBar: MatSnackBar) {
+  constructor(private readonly installationService: InstallationService, private snackBar: MatSnackBar, private router: Router) {
   }
 
   ngOnInit() {
@@ -34,8 +35,8 @@ export class InstallationComponent implements OnInit {
       };
 
       this.installationService.createAdmin(this.admin).subscribe((res) => {
-        console.warn(res);
         this.snackBar.open('Installed successfully', null, {duration: 4000, panelClass: 'snackbar-success'});
+        this.router.navigate(['/admin']).then();
       }, (err) => {
         this.snackBar.open('Installation error', null, {duration: 4000, panelClass: 'snackbar-error'});
         console.warn(err)
