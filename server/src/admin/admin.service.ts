@@ -3,6 +3,7 @@ import {Admin} from "./admin.entity";
 import {Repository} from "typeorm";
 import { InjectRepository } from '@nestjs/typeorm';
 import {CreateAdminDto} from "./create-admin.dto";
+import * as crypto from "crypto";
 
 @Injectable()
 export class AdminService {
@@ -12,13 +13,23 @@ export class AdminService {
         private readonly adminRepository: Repository<Admin>,
     ) {}
 
-    async findAll(): Promise<Admin[]> {
-        return await this.adminRepository.find();
+    async findOneByEmail(email: string): Promise<Admin> {
+        return new Admin();
     }
 
     async create(createAdminDto: CreateAdminDto): Promise<void> {
+        createAdminDto.password = crypto.createHmac('sha256', createAdminDto.password).digest('hex');
         createAdminDto.active = true;
         createAdminDto.emailConfirmed = false;
         await this.adminRepository.save(createAdminDto);
     }
+
+    async findByEmail(email: string): Promise<Admin> {
+        return await this.adminRepository.findOne({
+            where: {
+                email: email,
+            }
+        });
+    }
+
 }

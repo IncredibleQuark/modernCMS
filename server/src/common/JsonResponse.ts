@@ -1,5 +1,3 @@
-import {IJsonResponse} from "./IJsonResponse";
-
 export class JsonResponse {
     public static success(msg?) {
         return {
