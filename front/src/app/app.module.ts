@@ -16,6 +16,7 @@ import {DashboardComponent} from "./components/admin/dashboard/dashboard.compone
 import {AuthComponent} from "./components/admin/auth/auth.component";
 import {AuthService} from "./services/auth/auth.service";
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+import {AdminService} from "./services/admin/admin.service";
 
 export function jwtTokenGetter() {
   return localStorage.getItem('id_token');
@@ -47,7 +48,7 @@ export function jwtTokenGetter() {
       }
     })
   ],
-  providers: [InstallationService, AuthService, JwtHelperService],
+  providers: [InstallationService, AuthService, JwtHelperService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

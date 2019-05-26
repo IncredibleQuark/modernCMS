@@ -5,6 +5,7 @@ import {JsonResponse} from "../common/JsonResponse";
 import {JwtAuthGuard} from "../guards/jwtAuth.guard";
 import {Admin} from "./admin.entity";
 import {AuthService} from "../auth/auth.service";
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('admin')
 export class AdminController {
@@ -13,7 +14,7 @@ export class AdminController {
     }
 
     @Get()
-    @UseGuards(JwtAuthGuard)
+    @UseGuards(AuthGuard())
     async findAll() {
         return 'all';
     }

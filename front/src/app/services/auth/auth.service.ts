@@ -14,7 +14,7 @@ export class AuthService {
 
   authenticateUser(user) {
     const headers = {'Content-Type': 'application/json'};
-    return this.http.post(`${environment.adminApiUrl}/signin`, user, {headers: headers});
+    return this.http.post(`${environment.adminApiUrl}/admin/signin`, user, {headers: headers});
   }
 
   storeUserData(token) {
