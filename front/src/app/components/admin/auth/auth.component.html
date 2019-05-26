@@ -1,3 +1,49 @@
-<p>
-  auth works!
-</p>
+
+<div class="h-100-v" fxFlex="100" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="card-container" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="30" fxFlex.gt-lg="20">
+    <mat-card-content>
+      <mat-card-header>
+        <mat-card-title>
+          <h2 class="mat-title">Your app admin</h2>
+        </mat-card-title>
+      </mat-card-header>
+
+      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+
+        <div fxLayout="column">
+
+          <mat-form-field>
+
+            <input matInput name="email" type="email" placeholder="Email" email ngModel required #email="ngModel"/>
+            <mat-icon class="input-icon" color="primary">email</mat-icon>
+
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="email.touched && !email.valid && !loginForm.submitted">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="loginForm.submitted"></mat-error>
+
+          </mat-form-field>
+
+          <mat-form-field>
+
+            <input matInput name="password" type="password" placeholder="Password" ngModel required #password="ngModel"/>
+            <mat-icon class="input-icon" color="primary">vpn_key</mat-icon>
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="password.touched && !loginForm.submitted">
+              Password can't be empty
+            </mat-error>
+            <mat-error *ngIf="loginForm.submitted"></mat-error>
+          </mat-form-field>
+
+          <div fxLayout="row">
+            <button mat-raised-button color="primary" type="submit" class="mar-bot-15" [disabled]="!loginForm.valid || valid">Login</button>
+          </div>
+
+        </div>
+
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

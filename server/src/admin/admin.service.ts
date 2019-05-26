@@ -13,10 +13,6 @@ export class AdminService {
         private readonly adminRepository: Repository<Admin>,
     ) {}
 
-    async findOneByEmail(email: string): Promise<Admin> {
-        return new Admin();
-    }
-
     async create(createAdminDto: CreateAdminDto): Promise<void> {
         createAdminDto.password = crypto.createHmac('sha256', createAdminDto.password).digest('hex');
         createAdminDto.active = true;
@@ -24,7 +20,7 @@ export class AdminService {
         await this.adminRepository.save(createAdminDto);
     }
 
-    async findByEmail(email: string): Promise<Admin> {
+    async findOneByEmail(email: string): Promise<Admin> {
         return await this.adminRepository.findOne({
             where: {
                 email: email,

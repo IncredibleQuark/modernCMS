@@ -1,6 +1,7 @@
 
 import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
 import {Timestamp} from "../customEntity/timestamp.entity";
+import { IsEmail, IsNotEmpty } from 'class-validator';
 
 @Entity()
 export class Admin extends Timestamp {

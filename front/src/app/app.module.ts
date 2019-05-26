@@ -14,6 +14,7 @@ import {InstallationService} from "./services/installation/installation.service"
 import {HttpClientModule} from "@angular/common/http";
 import {DashboardComponent} from "./components/admin/dashboard/dashboard.component";
 import {AuthComponent} from "./components/admin/auth/auth.component";
+import {AuthService} from "./services/auth/auth.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {AuthComponent} from "./components/admin/auth/auth.component";
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [InstallationService],
+  providers: [InstallationService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
