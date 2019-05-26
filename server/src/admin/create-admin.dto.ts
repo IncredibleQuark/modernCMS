@@ -16,6 +16,8 @@ export class CreateAdminDto {
     email: string;
 
     @IsNotEmpty()
+    @MinLength(6)
+    @MaxLength(50)
     password: string;
 
     active?: boolean;

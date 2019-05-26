@@ -3,7 +3,8 @@ export class JsonResponse {
         return {
             message: 'success',
             code: 200,
-            data: msg
+            data: msg,
+            success: true,
         }
     }
 
@@ -11,7 +12,8 @@ export class JsonResponse {
         return {
             message: 'error',
             code: 400,
-            data: msg
+            data: msg,
+            success: false
         }
     }
 }

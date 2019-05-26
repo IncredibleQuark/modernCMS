@@ -15,6 +15,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {DashboardComponent} from "./components/admin/dashboard/dashboard.component";
 import {AuthComponent} from "./components/admin/auth/auth.component";
 import {AuthService} from "./services/auth/auth.service";
+import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+
+export function jwtTokenGetter() {
+  return localStorage.getItem('id_token');
+}
 
 @NgModule({
   declarations: [
@@ -33,9 +38,16 @@ import {AuthService} from "./services/auth/auth.service";
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: jwtTokenGetter,
+        whitelistedDomains: [],
+        blacklistedRoutes: []
+      }
+    })
   ],
-  providers: [InstallationService, AuthService],
+  providers: [InstallationService, AuthService, JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
